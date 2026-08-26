@@ -166,6 +166,51 @@ v class="container">
 
             <article class="post-card">
                 <span class="tag">Incident</span>
+                <h3>Investigating Unrecognized Network Devices</h3>
+                <p>
+                    I was snooping in my router's settings when I noticed a couple devices I couldn't recall adding to my network.
+                    <p>
+                    Here's what my router's management page looks like.
+                    </p>
+                    <img width="100%" src="./images/espressif_network_device_investigation_8_25_2026/home_network_devices.png"/>
+                    <p>
+                    I was snooping around it when I noticed 2 devices I didn't recognize - "192.168.1.242 / Linux" and "192.168.1.111 / espressif"
+                    </p>
+                    <img width="100%" src="./images/espressif_network_device_investigation_8_25_2026/home_network_devices_espressif_device.png"/>
+                    <p>
+                    I didn't want to risk the Chinese government being in my home network so I launched an investigation. The first step was to see if they had any open ports. The espressif device had port 80 open. The Linux device has port 6668 open and 27 filterd ports. 
+                    </p>
+                    <img width="100%" src="./images/espressif_network_device_investigation_8_25_2026/nmap_results_espressif_device.png"/>
+                    <p>
+                    Next, I wanted to see if they responded to a basic CURL request. Espressif did, but Linux timed-out.
+                    </p>
+                    <img width="100%" src="./images/espressif_network_device_investigation_8_25_2026/plain_curl_results_espressif_device.png"/>
+                    <p>
+                    Here's what the espressif device returned on a web-browser.
+                    </p>
+                    <img width="100%" src="./images/espressif_network_device_investigation_8_25_2026/browser_results_espressif_device.png"/>
+                    <p>
+                    This information was nice but I still had no clue what devices they were. A quick Google search revealed that the MAC addresses for those devices were registered to ESPressif Inc - a huge China-based MCU designer - and the Linux devices was registered to TUYA (another big IoT device company). This was insightful, but I still didn't know what devices they were.
+                    </p>
+                    <p>
+                    I blocked their MAC addresses in my router's configuration and nothing stopped working at home, so it couldn't have been anything I set-up. I flicked on and off all of my lightbulbs and smart speakers but they wouldn't dissapear form the network.
+                    </p>
+                    <img width="100%" src="./images/espressif_network_device_investigation_8_25_2026/home_network_devices_espressif_device_after_blocking.png"/>
+                    <img width="100%" src="./images/espressif_network_device_investigation_8_25_2026/home_network_devices_espressif_device_reconnected.png"/>
+                    <p>
+                    It wasn't until after I disconnected my siblings water kettle that the espressif device disconnected from the network - myster half solved! It turned out the water kettle was a smart device added to the network without my knowledge.
+                    </p>
+                    <p>
+                    I still didn't know what the Linux device was. It's signal strength was -85mdB - super weak - and besides for it's MAC and IP address I didn't know anything else about it. I wanted to figure out how far from the router it could be.
+                    </p>
+                    <p>
+                    Finally, I connected my cellphone to the router and walked away from the router. I ended up going outside, into the backyard, past the patio, and sat in a chair next to a firepit - almost off my proprety. My signal strength read "-81mdB"!
+                    Even though I was almost off my property I still had a stronger signal than the Linux devices. Going into my neighbors yard/house was off the table so, with nothing else to do, I settled for simply blocking it's MAC address and hiding my network SSID. As long as I regularly monitor for the reappearance of this device my network should remain uncompromised.
+                    </p>
+                </p>
+            </article>
+            <article class="post-card">
+                <span class="tag">Incident</span>
                 <h3>Benchmarking Hallucination Detection</h3>
                 <p>
                     Have you ever read a response from your AI and thot "this is totally not what I was talking about.... but wait, this bit (& this bit only) is exactly what I was talking about".
@@ -173,6 +218,6 @@ v class="container">
                     Read the heading. This is my first post. The topic of this heading is the most common hallucination I've encountered. When this happens it is important to remember that 
                     AI is ONLY a tool for you (the sophisticated one) to leverage. This is your opportunity to grab the AI by the handle-bars and steer it in the appropriate direction. Start a brand new chat on 
                     a newly grounded (& more evolved) topic.
-                </p>
+                    </p>
                 </p>
             </article>
