@@ -81,10 +81,13 @@
             padding: 1.5rem;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            max-height: 80vh;
+            overflow-y: scroll;
         }
 
         .post-card:hover {
             transform: translateY(-5px);
+            max-height: fit-content;
         }
 
         .post-card h3 {
@@ -166,6 +169,61 @@ v class="container">
 
             <article class="post-card">
                 <span class="tag">Incident</span>
+                <h3>Investigating Code Generation Hallucinations</h3>
+                <p>
+                    I made a cool web app recently. It's useful for tracking workouts. Check it out @<a href="https://diego-esquivel.github.io/Workout-Tracker/">https://diego-esquivel.github.io/Workout-Tracker/</a>.
+                    </p>
+                    <p>
+                    Here's the prompt I used to generate the code. It's basic, it's not all the "correct", there are no UML charts, and I made it up in 30 seconds - BUT it got the job done (a testatment to the power of LLMs).
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/initial_prompt.png"/>
+                    <p>
+                    Like most LLMs, the initial response was both confident and voberse: 
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/confident_initial_response.png"/>
+                    <p>
+                    Sadly, it was also filled with simple syntax errors. Notably, it didn't add the "link"j, "script", or "anchor" tag around the the appropriate stylesheet, app.js, or hyperlinks. This wasn't a very complicated app so I was highly dissapointed. In the LLMs defense, my prompt was not very good. 
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/initial_index_page.png"/>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/initial_statistics_page.png"/>
+                    <p>
+                    Next, I wanted to see if it could correct itself... it could talk about its mistakes but it could not actually correct them...
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/prompt_first_agent_to_correct_mistakes.png"/>
+                    <p>
+                    I also tried asking it for help but it gave me bad advice.
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/inappropriate_correction_after_user_giving_up_on_AI.png"/>
+                    <p>
+                    If you read my first post you'll notice this is an example of it saying 1 thing that is exaclty what I was talking about but everything else is totally wrong. The only sensible thing I could think to do now was to start a new agent!!
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/second_agent_appropriate_code_analysis.png"/>
+                    <p>
+                    Instead of manually copy and pasting the correction, I asked it to summarize the results.
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/final_response.png"/>
+                    <p>
+                    This resulted in good code (::).
+                    </p>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/final_index_page.png"/>
+                    <img width="100%" src="./images/workout_app_code_generation_assessment_9_1_2026/final_results.png"/>
+                    <p>
+                    For whatever reason, the first agent was only good at generating initial code and could not provide syntax help. The second agent could provide syntax help. This could be due to my poor prompt BUT investigating that is for another post.
+                    </p>
+                    <p>
+                    I also could try sounding more professional, but I'm the whole thing process took 15 minutes so, not exactly worth my time.
+                    </p>
+                    <p>
+                    Finally, If I try to use AI for a more sophisticated project I will be sure to provide it with a more advanced prompt. In the past, this has yielded mildly pleasant results. The art of prompt engineering feels promising.
+                    </p>
+                </p>
+            </article>
+        </div>
+
+        <div class="posts">
+
+            <article class="post-card">
+                <span class="tag">Incident</span>
                 <h3>Investigating Unrecognized Network Devices</h3>
                 <p>
                     I was snooping in my router's settings when I noticed a couple devices I couldn't recall adding to my network.
@@ -221,3 +279,5 @@ v class="container">
                     </p>
                 </p>
             </article>
+        </div>
+        
